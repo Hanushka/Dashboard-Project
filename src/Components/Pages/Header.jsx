@@ -1,0 +1,126 @@
+import { useState } from "react";
+import { FaRegBell } from "react-icons/fa";
+import { FiMenu, FiX } from "react-icons/fi";
+
+export default function Header({ toggleSidebar, sidebarOpen }) {
+  
+  const [notifOpen, setNotifOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-64 right-0 h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 z-50">
+      {/* button */}
+      <button
+        onClick={toggleSidebar}
+        className="lg:hidden flex items-center justify-center w-10 h-10 rounded-md bg-gray-200 hover:bg-gray-300"
+      >
+        {sidebarOpen ? (
+          <FiX className="h-6 w-6 text-gray-700" />
+        ) : (
+          <FiMenu className="h-6 w-6 text-gray-700" />
+        )}
+      </button>
+
+      {/* Right Side */}
+      <div className="flex items-center space-x-4 ml-auto">
+        {/* Notifications */}
+        <div className="relative">
+          <button
+            onClick={() => setNotifOpen(!notifOpen)}
+            className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300"
+          >
+            <FaRegBell className="h-6 w-6 text-gray-700" />
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">
+              2
+            </span>
+          </button>
+          {notifOpen && (
+            <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-md p-4">
+              {/* Notification items */}
+              <div className="flex items-center mb-3 border-b border-gray-200 pb-3">
+                <img
+                  src="/images/avatar-1.png"
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full mr-3 cursor-pointer"
+                />
+                <div>
+                  <h2 className="text-md">New order received</h2>
+                  <p className="text-md">Order #12345 has been placed</p>
+                  <p className="text-md text-gray-500 p-2">5 minutes ago</p>
+                </div>
+              </div>
+
+              {/* Notification 2 */}
+              <div className="flex items-center mb-3 border-b border-gray-200 pb-3">
+                <img
+                  src="/images/avatar-3.png"
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full mr-3 cursor-pointer"
+                />
+                <div>
+                  <h2 className="text-md">New user registered</h2>
+                  <p className="text-md">User @john_doe has signed up</p>
+                  <p className="text-md text-gray-500 p-2">30 minutes ago</p>
+                </div>
+              </div>
+
+              {/* Notification 3 */}
+              <div className="flex items-center mb-3 border-b border-gray-200 pb-3">
+                <img
+                  src="/images/avatar-2.png"
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full mr-3 cursor-pointer"
+                />
+                <div>
+                  <h2 className="text-md">Payment confirmed</h2>
+                  <p className="text-md">Payment of $299 has been received</p>
+                  <p className="text-md text-gray-500 p-2">1 hour ago</p>
+                </div>
+              </div>
+              {/* notifications  */}
+              <p className="text-md text-[#e66239] cursor-pointer mt-2 text-center">
+                View all notifications
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Profile */}
+        <div className="relative">
+          <button onClick={() => setProfileOpen(!profileOpen)}>
+            <img
+              src="/images/avatar-1.png"
+              alt="Profile"
+              className="w-8 h-8 rounded-full"
+            />
+          </button>
+          {profileOpen && (
+            <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-md p-4 border border-gray-300">
+              <div className="flex items-center mb-4">
+                <img
+                  src="/images/avatar-1.png"
+                  alt="Profile"
+                  className="w-12 h-12 rounded-full mr-3"
+                />
+                <div className="border-b border-gray-300 pb-2 w-full">
+                  <h2 className="text-md text-[#373d3f]">Shrina Tesla</h2>
+                  <p className="text-md text-[#373d3f]">@imshrina</p>
+                </div>
+              </div>
+              {["Home", "Inbox", "Chat", "Activity", "Account Settings"].map(
+                (item, i) => (
+                  <h3
+                    key={i}
+                    className="text-md mb-2 cursor-pointer hover:text-[#e66239] text-[#525252]"
+                  >
+                    {item}
+                  </h3>
+                ),
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}
