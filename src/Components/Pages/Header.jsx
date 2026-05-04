@@ -8,7 +8,7 @@ export default function Header({ toggleSidebar, sidebarOpen }) {
   const [profileOpen, setProfileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-64 right-0 h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 z-50">
+    <header className="fixed top-0 left-0 right-0 h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 z-40">
       {/* button */}
       <button
         onClick={toggleSidebar}

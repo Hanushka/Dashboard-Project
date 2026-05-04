@@ -10,7 +10,7 @@ export default function MainLayout() {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-white border-r transform transition-transform duration-300 ${
@@ -21,9 +21,9 @@ export default function MainLayout() {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col lg:ml-64">
+      <div className="flex-1 flex flex-col lg:ml-64 w-full">
         <Header toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-        <main className="mt-16 p-6 flex-1 overflow-y-auto">
+        <main className="mt-16 p-6 flex-1">
           <Outlet />
         </main>
         <Footer />

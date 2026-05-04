@@ -18,7 +18,11 @@ export default function Sidebar() {
     "flex items-center p-2 rounded hover:bg-[#fae0d7] hover:text-[#fb2c36] text-[#262626]";
 
   return (
-    <div className="fixed top-0 left-0 h-screen w-64 bg-white border-r border-gray-200">
+    <div
+      className={`fixed top-0 left-0 h-screen w-64 bg-white border-r z-50 transform transition-transform duration-300 ${
+        sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+      }`}
+    >
       {/* Sidebar */}
       {sidebarOpen && (
         <aside className="w-64 bg-white border-r border-gray-300 p-2">
