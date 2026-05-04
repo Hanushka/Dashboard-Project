@@ -29,10 +29,10 @@ function App() {
 
         {/* Dashboard */}
         <Route element={<MainLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="inventory" element={<Inventory />} />
-          <Route path="add-product" element={<AddProduct />} />
-          <Route path="reports" element={<Reports />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/reports" element={<Reports />} />
         </Route>
       </Routes>
     </Router>
